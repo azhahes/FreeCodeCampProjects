@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey form</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
+
+    body {
+        background-color: rgb(255, 255, 255);
+        color: rgb(116, 116, 116);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Lato', sans-serif;
+        font-weight:1000;
+    }
+
+    h1 {
+        font-weight: 1000;
+    }
+
+    p {
+        color: rgba(116, 116, 116, 0.8);
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    main {
+        width: 50%;
+        transition: linear 500ms;
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        ;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: 15px 15px 30px #d9d9d9,
+            -15px -15px 30px #ffffff;
+        ;
+
+        height: 700px;
+        margin: 20px 20px;
+    }
+
+    @media (max-width: 800px) {
+        main {
+            width: 80%;
+            transition: linear 500ms;
+        }
+    }
+
+    h1 {
+        margin: 0px 0px;
+        text-align: center;
+        font-weight: 900;
+    }
+
+    p {
+        text-align: center;
+        margin: 0px;
+        padding: 8px;
+        font-size: 10px;
+    }
+
+    #survey-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 20px;
+        height: 90%;
+    }
+
+    .input-container {
+        padding: 5px;
+    }
+
+    .textType {
+        padding: 5px;
+        background: transparent;
+        width: 100%;
+        height: 25px;
+        border: 0px;
+        border-bottom: .2px solid rgba(34, 34, 34, 0.9);
+        font-family: inherit;
+        color: black;
+    }
+
+    .textType:focus {
+        border: 0px;
+        transition: linear 200ms;
+        border-bottom: 1px solid rgb(59, 59, 59);
+        border-style: inset;
+        outline: none;
+    }
+
+    .textType:hover {
+        transition: linear 200ms;
+        border-bottom: 1px solid rgb(136, 136, 136);
+        border-style: inset;
+        outline: none;
+    }
+
+    label,#subjectheading {
+        color: rgb(139, 139, 139);
+    }
+
+    .radio {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 10%;
+    }
+    .checkBox-Container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 40%;
+    }
+    button{
+        width: 40%;
+        height: 70%;
+        border: none;
+        border-radius: 33px;
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+        box-shadow:  27px 27px 54px #c2c2c2, 
+             -27px -27px 54px #ffffff;
+             color: rgb(139, 139, 139);
+             font-size: 150%;
+             font-weight: 100;
+    }
+    button:hover{
+        transition: linear 200ms;
+        box-shadow:  27px 27px 54px #9c9c9c, 
+             -27px -27px 54px #ffffff;
+    }
+    button:focus{
+           outline: none; 
+           box-shadow: inset 27px 27px 54px #9c9c9c, 
+            inset -27px -27px 54px #ffffff;
+    }
+
+
+    #button-container{
+        height: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .comment-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 20%;
+    }
+</style>
+
+<body>
+    <h1 id="title">Survey Form</h1>
+    <p id="description">Survey of Student's favourite subject</p>
+    <main class="main-container">
+        <form action="submit" id="survey-form">
+            <div class="input-container">
+                <div>
+                    <label id="name-label" for="name">Name</label>
+                </div>
+                <div>
+                    <input required placeholder="Please enter name" class="textType" type="text" name="name" id="name">
+                </div>
+            </div>
+            <div class="input-container">
+                <div>
+                    <label id="email-label" for="email">Email</label>
+                </div>
+                <div>
+                    <input required placeholder="Please enter email" class="textType" type="email" name="email" id="email">
+                </div>
+            </div>
+            <div class="input-container">
+                <div>
+                    <label id="number-label" for="number">Roll Number</label>
+                </div>
+                <div>
+                    <input class="textType" placeholder="Please enter roll number" type="number" name="number" id="number" min="10" max="2000">
+                </div>
+            </div>
+            <div class="input-container">
+                <div>
+                    <label for="dropdown">Class</label>
+                </div>
+                <div style="padding: 4px;">
+                    <select style="padding: 4px;" class="textType" name="dropdown" id="dropdown">
+                        <option style="color: rgb(177, 177, 177);" selected></option>
+                        <option value="dropdown1">Class A</option>
+                        <option value="dropdown2">Class B</option>
+                        <option value="dropdown3">Class C</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-container radio">
+                <div>
+                    <input type="radio" value="male" name="name" id="radio1">
+                    <label for="radio1">Male</label>
+                </div>
+                <div>
+                    <input type="radio" value="female" name="name" id="radio2">
+                    <label for="radio2">Female</label>
+                </div>
+            </div>
+            <div class="input-container checkBox-Container">
+                <div id="subjectheading" style="margin: 5px 0px 0px 0px;">Please select favourite subject:</div>
+                <div>
+                    <input type="checkbox" name="check1" id="check1" value="check1">
+                    <label for="check1">Maths</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="check2" id="check2" value="check2">
+                    <label for="check2">Physics</label>
+
+                </div>
+                <div>
+                    <input type="checkbox" name="check3" id="check3" value="check3">
+                    <label for="check3">Chemistry</label>
+
+                </div>
+                <div>
+                    <input type="checkbox" name="check4" id="check4" value="check4">
+                    <label for="check4">Biology</label>
+
+                </div>
+            </div>
+           <div class="input-container comment-container">
+                <div>
+                    <label for="comments">What makes you to like this subject</label>
+                </div>
+                <div>
+                    <textarea style="height: 40px" class="textType" name="comments" id="comments"></textarea>
+                </div>
+            </div>
+            <div id="button-container"><button type="submit" id="submit">Submit</button></div>
+                
+        </form>
+    </main>
+</body>
+
+</html>
