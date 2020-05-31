@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Array HOF</title>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box ;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        line-height: 1.5;
+        color: rgb(75, 75, 75);
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+        opacity: .5;
+        transition: all 200ms ease;
+    }
+
+    a:hover{
+        transform: scale(1.2);
+        font-size: 1.2em;
+        opacity: 1.2;
+        color: black;
+    }
+    #title{
+        font-weight: bolder;
+        font-size: 2rem;
+        text-align: center;
+        height: 50px;
+        padding: 20px;
+        position: absolute;
+        width: 70%;
+        min-width: 60%;
+        left: 250px;
+    }
+    #navbar{
+        min-width: 240px;
+        width: 250px;
+        left: 10px;
+        padding:10px ;
+        height: 100vh;
+        position:  fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #navbar ul{
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+    }
+    #navbar ul li{
+        padding: 10px;
+        height: 20px;
+    }
+    #doc-title{
+        padding: 10px;
+    }
+    #main-doc{
+        position: absolute;
+        left: 20%;
+        width: 80%;
+        top: 100px;
+    }
+    header{
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 10px 10px 10px 0;
+        color: black;
+    }
+    section{
+        padding: 10px;
+        line-height: 2;
+    }
+    section ul{
+        margin: 10px 0 10px 50px;
+    }
+    section ol{
+        margin: 10px 0 10px 50px;
+    }
+    code div{
+        padding: 10px;
+        background: rgba(172, 172, 172, 0.39);
+        border-radius: 10px;
+        width: 70%;
+        color: rgb(66, 66, 66);
+        font-family: monospace;
+    }
+    @media screen and (max-width: 500px) {
+
+            #navbar{
+                width: 100%;
+                height: 100px;
+                left: 0;
+                top: 30px;
+                position:  fixed;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                background-color: white;
+                z-index: 4;
+    }
+    #navbar header{
+        text-align: center;
+        font-size: 1rem;
+        padding: 5px;
+    }
+    #navbar ul{
+        display: flex;
+        list-style-type: none;
+        flex-direction: row;
+    }
+    #title{
+        background-color: white;
+        font-size: 1.2rem;
+        width:100%;
+        left:0;
+        position: fixed;
+        height: 20px;
+        z-index: 2;
+        padding: 5px;
+    }
+    #main-doc{
+        box-sizing: border-box;
+        display: block;
+        /* padding-top: 30px; */
+        top: 0;
+        width:100%;
+        left: 0;
+    }
+    section{
+        padding-top: 135px;
+    }
+
+
+    }
+</style>
+<body>
+    <header id="title">Documentation for Javascript Higher order function</header>
+    <nav id="navbar">
+        <header id="doc-title">JS Array HOF</header>
+        <ul>
+            <li><a class="nav-link" href="#Array_push">Push</a></li>
+            <li><a class="nav-link" href="#Array_pop">Pop</a></li>
+            <li><a class="nav-link" href="#Array_shift">Shift</a></li>
+            <li><a class="nav-link" href="#Array_unshift">Unshift</a></li>
+            <li><a class="nav-link" href="#Array_forEach">ForEach</a></li>
+            <li><a class="nav-link" href="#Array_map">Map</a></li>
+            <li><a class="nav-link" href="#Array_reduce">Reduce</a></li>
+            <li><a class="nav-link" href="#Array_slice">Slice</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section class="main-section" id="Array_push">
+            <header id="Array_push">Array push</header>
+            <article>
+                <p>The push() method adds one or more elements to the end of an array and returns the new length of the array.</p>
+                <ul>
+                    <li>The push method appends values to an array.</li>
+                    <li>push is intentionally generic. This method can be used with call() or apply() on objects resembling arrays. The push method relies on a length property to determine where to start inserting the given values. If the length property cannot be converted into a number, the index used is 0. This includes the possibility of length being nonexistent, in which case length will also be created.</li>
+                    <li>Although strings are native, Array-like objects, they are not suitable in applications of this method, as strings are immutable.  Similarly for the native, Array-like object arguments.</li>
+                </ul>
+                <code><div>
+                    const animals = ['pigs', 'goats', 'sheep'];<br/>
+                    const count = animals.push('cows');<br/>
+                    console.log(count);<br/>
+                    // expected output: 4<br/>
+                    console.log(animals);<br/>
+                    // expected output: Array ["pigs", "goats", "sheep", "cows"]<br/>
+                    animals.push('chickens', 'cats', 'dogs');<br/>
+                    console.log(animals);<br/>
+                    // expected output: Array ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]<br/>
+                </div><code>
+            </article>
+        </section>
+        <section class="main-section" id="Array_pop">
+            <header id="Array_pop">Array pop</header>
+            <article>
+                <p>The pop() method removes the last element from an array and returns that element. This method changes the length of the array.</p>
+                <ul>
+                    <li>The pop method removes the last element from an array and returns that value to the caller.</li>
+                    <li>pop is intentionally generic; this method can be called or applied to objects resembling arrays. Objects which do not contain a length property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner.</li>
+                    <li>If you call pop() on an empty array, it returns undefined.</li>
+                    <li>Array.prototype.shift() has similar behavior to pop, but applied to the first element in an array.</li>
+                </ul>
+                <code><div>
+                    const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];<br/>
+                    <br/>
+                    console.log(plants.pop());<br/>
+                    // expected output: "tomato"<br/>
+                    <br/>
+                    console.log(plants);<br/>
+                    // expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]<br/>
+                    <br/>
+                    plants.pop();<br/>
+                    <br/>
+                    console.log(plants);<br/>
+                    // expected output: Array ["broccoli", "cauliflower", "cabbage"]<br/>
+                </div><code>
+            </article>
+        </section>
+        <section class="main-section" id="Array_shift">
+            <header id="Array_shift">Array shift</header>
+            <article>
+                <p>The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array.</p>
+                <ul>
+                    <li>The shift method removes the element at the zeroeth index and shifts the values at consecutive indexes down, then returns the removed value. If the length property is 0, undefined is returned.</li>
+                    <li>shift is intentionally generic; this method can be called or applied to objects resembling arrays. Objects which do not contain a length property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner.</li>
+                    <li>Array.prototype.pop() has similar behavior to shift, but applied to the last element in an array.</li>
+                </ul>
+                <code><div>
+                    const array1 = [1, 2, 3];<br/>
+                    <br/>
+                    const firstElement = array1.shift();<br/>
+                    <br/>
+                    console.log(array1);<br/>
+                    // expected output: Array [2, 3]<br/>
+                    <br/>
+                    console.log(firstElement);<br/>
+                    // expected output: 1<br/>
+                </div><code>
+            </article>
+        </section>
+        <section class="main-section" id="Array_unshift">
+            <header id="Array_unshift">Array unshift</header>
+            <article>
+                <p>The unshift() method adds one or more elements to the beginning of an array and returns the new length of the array.</p>
+                <ul>
+                    <li>The unshift method inserts the given values to the beginning of an array-like object.</li>
+                    <li>unshift is intentionally generic. This method can be called or applied to objects resembling arrays. Objects which do not contain a length property—reflecting the last in a series of consecutive, zero-based numerical properties—may not behave in any meaningful manner.</li>
+                    <li>Please note that, if multiple elements are passed as parameters, they're inserted in chunk at the beginning of the object, in the exact same order they were passed as parameters. Hence, calling unshift with n arguments once, or calling it n times with 1 argument (with a loop, for example), don't yield the same results.</li>
+                </ul>
+                <code><div>
+                    const array1 = [1, 2, 3];<br>
+                    <br>
+                    console.log(array1.unshift(4, 5));<br>
+                    // expected output: 5<br>
+                    <br>
+                    console.log(array1);<br>
+                    // expected output: Array [4, 5, 1, 2, 3]<br>
+                </div><code>
+            </article>
+        </section>
+        <section class="main-section" id="Array_foreach">
+            <header id="Array_foreach">Array forEach</header>
+            <article>
+                <p>The forEach() method executes a provided function once for each array element.</p>
+                <ul>
+                    <li>forEach() calls a provided callback function once for each element in an array in ascending order. It is not invoked for index properties that have been deleted or are uninitialized. </li>
+                    <li>
+                        <p>callback is invoked with three arguments:</p>
+                        <ol>
+                            <li>the value of the element</li>
+                            <li>the index of the element</li>
+                            <li>the Array object being traversed</li>
+                        </ol>
+                    </li>
+                    <li>If a thisArg parameter is provided to forEach(), it will be used as callback's this value. The thisArg value ultimately observable by callback is determined according to the usual rules for determining the this seen by a function.</li>
+                </ul>
+                <code><div>
+                    const array1 = ['a', 'b', 'c'];<br>
+                    <br>
+                    array1.forEach(element => console.log(element));<br>
+                    <br>
+                    // expected output: "a"<br>
+                    // expected output: "b"<br>
+                    // expected output: "c"<br>
+                </div><code>
+            </article>
+        </section>
+        <section class="main-section" id="Array_map">
+            <header id="Array_map" >Array map</header>
+            <article>
+                <p>The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.</p>
+                <ul>
+                    <li>map calls a provided callback function once for each element in an array, in order, and constructs a new array from the results. callback is invoked only for indexes of the array which have assigned values (including undefined).</li>
+                    <li>
+                        <p>It is not called for missing elements of the array; that is:</p>
+                        <ul>
+                            <li>indexes that have never been set;</li>
+                            <li>which have been deleted; or</li>
+                            <li>which have never been assigned a value.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <code><div>const array1 = [1, 4, 9, 16];<br>
+                    <br>
+                    // pass a function to map<br>
+                    const map1 = array1.map(x => x * 2);<br>
+                    <br>
+                    console.log(map1);<br>
+                    // expected output: Array [2, 8, 18, 32]<br></div><code>
+            </article>
+        </section>
+        <section class="main-section" id="Array_reduce">
+            <header id="Array_reduce">Array reduce</header>
+            <article>
+                <p>The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in single output value.</p>
+                <ul>
+                    <li>
+                        <p>The reduce() method executes the callback once for each assigned value present in the array, taking four arguments:</p>
+                        <ol>
+                            <li>accumulator</li>
+                            <li>currentValue</li>
+                            <li>currentIndex</li>
+                            <li>array</li>
+                        </ol>
+                    </li>
+                    <li>The first time the callback is called, accumulator and currentValue can be one of two values. If initialValue is provided in the call to reduce(), then accumulator will be equal to initialValue, and currentValue will be equal to the first value in the array. If no initialValue is provided, then accumulator will be equal to the first value in the array, and currentValue will be equal to the second.</li>
+                    <li>If the array is empty and no initialValue is provided, TypeError will be thrown.</li>
+                </ul>
+                <code><div>const array1 = [1, 2, 3, 4];<br>
+                    const reducer = (accumulator, currentValue) => accumulator + currentValue;<br>
+                    <br>
+                    // 1 + 2 + 3 + 4<br>
+                    console.log(array1.reduce(reducer));<br>
+                    // expected output: 10<br>
+                    <br>
+                    // 5 + 1 + 2 + 3 + 4<br>
+                    console.log(array1.reduce(reducer, 5));<br>
+                    // expected output: 15<br></div><code>
+            </article>
+        </section>
+        <section class="main-section" id="Array_slice">
+            <header id="Array_slice" >Arrayslice</header>
+            <article>
+                <p>The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included) where begin and end represent the index of items in that array. The original array will not be modified.</p>
+                <ul>
+                    <p style="margin-left: -30px;">slice does not alter the original array. It returns a shallow copy of elements from the original array. Elements of the original array are copied into the returned array as follows:</p>
+                    <li>For object references (and not the actual object), slice copies object references into the new array. Both the original and new array refer to the same object. If a referenced object changes, the changes are visible to both the new and original arrays.</li>
+                    <li>For strings, numbers and booleans (not String, Number and Boolean objects), slice copies the values into the new array. Changes to the string, number, or boolean in one array do not affect the other array.</li>
+                    <p>If a new element is added to either array, the other array is not affected.</p>
+                </ul>
+                <code><div>const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];<br>
+                    <br>
+                    console.log(animals.slice(2));<br>
+                    // expected output: Array ["camel", "duck", "elephant"]<br>
+                    <br>
+                    console.log(animals.slice(2, 4));<br>
+                    // expected output: Array ["camel", "duck"]<br>
+                    <br>
+                    console.log(animals.slice(1, 5));<br>
+                    // expected output: Array ["bison", "camel", "duck", "elephant"]<br></div><code>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
